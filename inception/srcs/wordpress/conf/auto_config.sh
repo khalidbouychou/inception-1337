@@ -21,7 +21,6 @@ wp config set --allow-root DB_USER ${S_USER} --path='/var/www/wordpress'
 wp config set --allow-root DB_PASSWORD ${S_PWD} --path='/var/www/wordpress'
 wp config set --allow-root DB_HOST "mariadb:3306" --path='/var/www/wordpress'
 
-# wp user create --allow-root hello hell@gmail.com --path='/var/www/wordpress'
 
 mkdir -p /run/php
 

@@ -17,4 +17,4 @@ mysql -u root -p$S_ROOT_P -e "FLUSH PRIVILEGES;"
 
 mysqladmin -u root -p$S_ROOT_P shutdown
 
-exec mysqld_safe
+exec mysqld_safe --port=3306 --bind-address=0.0.0.0
