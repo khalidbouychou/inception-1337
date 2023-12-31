@@ -14,4 +14,4 @@ RUN chmod +x /script.sh
 ENTRYPOINT [ "./script.sh" ]
 
 # running mysqld daemon
-CMD [ "mysqld" ]
+# CMD [ "mysqld" ]
