@@ -1,11 +1,6 @@
 #!/bin/bash
 
-sleep 10
-DN="localhost"
-U="admin"
-AE="nfo@gmail.com"
-PW="Gg712178@19977"
-TITLE="Wordpress Site"
+sleep 5
 
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar  
 
@@ -29,24 +24,22 @@ mv /var/www/wordpress/wp-config-sample.php  /var/www/wordpress/wp-config.php
 
 sed -i '36 s/\/run\/php\/php7.4-fpm.sock/9000/' /etc/php/7.4/fpm/pool.d/www.conf
 
-wp config set --allow-root DB_NAME ${SDB} --path='/var/www/wordpress'
-wp config set --allow-root DB_USER ${S_USER} --path='/var/www/wordpress'
-wp config set --allow-root DB_PASSWORD ${S_PWD} --path='/var/www/wordpress'
-wp config set --allow-root DB_HOST "mariadb:3306" --path='/var/www/wordpress'
+cd /var/www/wordpress
+
+wp config set --allow-root DB_NAME ${MYSQLDB} 
+wp config set --allow-root DB_USER ${MSQLUSER}
+wp config set --allow-root DB_PASSWORD ${MYSQLPASSWORD}
+wp config set --allow-root DB_HOST "mariadb:3306"
 
 chmod 600 wp-config.php
 
 # instal the wordpress
-wp core install --url="localhost" \
-                --title="inception" \
-                --admin_user="khbouych" \
-                --admin_password="Gg712178 " \
-                --admin_email="khalidbouychouu@gmail.com" \
-                --allow-root \
-                --path='/var/www/wordpress'
+CONFIG= --url=$W_DN --title=$W_TITLE --admin_user=$W_A_N --admin_password=$W_A_P --admin_email=$W_E_A --allow-root
+wp core install $CONFIG 
 
-# # create second user in wordpress
-# wp user create khalid khalid@gmail.com --user_pass="1234" --role='author' --allow-root
+# create user in wordpress
+NEW_USER=${N_W_USER} ${N_W_EMAIL} --user_pass=$N_W_PASS --role=$N_W_ROLE --allow-root
+wp user create $NEW_USER
 
 mkdir -p /run/php
 
