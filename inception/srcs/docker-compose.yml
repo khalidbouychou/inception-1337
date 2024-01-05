@@ -24,19 +24,19 @@ services:
   mariadb:
    image: mariadb
    container_name: mariadb
-   build: ./mariadb/.
+   build: ./mariadb
    volumes:
      - mariadb:/var/lib/mysql
    env_file :
     - .env
    networks :
     - inception
-   restart: always
+   restart: on-failure
 #nginx
   nginx:
     image: nginx
     container_name: nginx
-    build: ./nginx/.
+    build: ./nginx
     ports:
       - "443:443"
     depends_on:
@@ -50,7 +50,7 @@ services:
   wordpress:
     image: wordpress
     container_name: wordpress
-    build: ./wordpress/.
+    build: ./wordpress
     depends_on:
       - mariadb
     volumes:
@@ -59,16 +59,18 @@ services:
       - .env
     networks:
       - inception
-    restart: always
+    restart: on-failure
   #bonus part
-  # adminer:
-  #   image: adminer
-  #   container_name: adminer
-  #   build: ./srcs/bonus/adminer/.
-  #   depends_on:
-  #     - mariadb
-  #   ports:
-  #     - "600:80"
-  #   networks:
-  #     - inception
-  #   restart: always
+  adminer:
+    image: adminer
+    container_name: adminer
+    build: ./bonus/adminer
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    ports:
+      - 8080:8080
+    restart: always
+    env_file :
+      - .env

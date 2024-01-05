@@ -1,20 +1,19 @@
 #AUTHOR : KHALID BOUYCHOU
 #LOGIN  : khbouych
 
-YMLFILE = docker-compose -f srcs/docker-compose.yml up -d --build
-DOWN = docker-compose -f srcs/docker-compose.yml  down
-CLEAN = docker system prune -a
-FORBIDDENFILES = all down clean re
-RESET = clean all
+all: up
 
-all :
-	 $(YMLFILE)
+up:
+	docker-compose -f ./srcs/docker-compose.yml up --build -d
 
-down : clean
+down :
+	docker-compose -f ./srcs/docker-compose.yml down
 
-clean :
-	$(DOWN) $(CLEAN)
+stop :
+	docker-compose -f ./srcs/docker-compose.yml stop
 
-re : $(RESET)
+start :
+	docker-compose -f ./srcs/docker-compose.yml start
 
-.PHONY : $(FORBIDDENFILES)
+status :
+	docker ps -a
