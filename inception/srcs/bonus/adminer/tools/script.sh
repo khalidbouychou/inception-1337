@@ -9,6 +9,4 @@ chmod 755 /var/www/wordpress/adminer.php
 
 cd /var/www/wordpress
 
-# rm -rf index.html
-
 php -S 0.0.0.0:80
