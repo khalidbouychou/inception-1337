@@ -24,7 +24,7 @@ services:
   mariadb:
    image: mariadb:khbouych
    container_name: mariadb
-   build: ./mariadb
+   build: ./requirements/mariadb
    volumes:
      - mariadb:/var/lib/mysql
    env_file :
@@ -36,7 +36,7 @@ services:
   nginx:
     image: nginx:khbouych
     container_name: nginx
-    build: ./nginx
+    build: ./requirements/nginx
     ports:
       - "443:443"
     depends_on:
@@ -50,7 +50,7 @@ services:
   wordpress:
     image: wordpress:khbouych
     container_name: wordpress
-    build: ./wordpress
+    build: ./requirements/wordpress
     depends_on:
       - mariadb
     volumes:
@@ -64,7 +64,7 @@ services:
   adminer:
     image: adminer:khbouych
     container_name: adminer
-    build: ./bonus/adminer
+    build: ./requirements/bonus/adminer
     depends_on:
       - mariadb
     networks:
