@@ -12,7 +12,7 @@ mkdir -p /run/php/
 
 cd /var/www/wordpress
 
-chmod -R 755 /var/www/wordpress/ 
+chmod -R 755 /var/www/wordpress/
 
 chown -R root:root /var/www/wordpress
 
