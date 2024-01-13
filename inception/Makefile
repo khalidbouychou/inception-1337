@@ -1,6 +1,3 @@
-#AUTHOR : KHALID BOUYCHOU
-#LOGIN  : khbouych
-
 all: up
 
 up:

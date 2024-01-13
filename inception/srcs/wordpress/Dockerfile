@@ -1,8 +1,5 @@
 FROM debian:bullseye
 
-ENV SDB="sdb"
-ENV S_USER="khbouych"
-ENV S_PWD="0000"
 
 RUN apt  update && apt  upgrade -y && apt  install curl -y
 

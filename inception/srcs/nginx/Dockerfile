@@ -1,16 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/30 20:27:11 by khbouych          #+#    #+#              #
-#    Updated: 2023/12/30 20:27:12 by khbouych         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 FROM debian:bullseye
 
 RUN apt-get update && \
@@ -31,6 +18,5 @@ RUN mkdir -p /var/www/wordpress
 RUN chmod 755 /var/www/wordpress
 
 RUN chown -R www-data:www-data /var/www/wordpress
-# RUN chown -R www-data:www-data /var/www/html
 
 CMD ["nginx", "-g", "daemon off;"]

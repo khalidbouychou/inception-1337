@@ -22,7 +22,7 @@ networks:
 services:
   #mariadb
   mariadb:
-   image: mariadb
+   image: mariadb:khbouych
    container_name: mariadb
    build: ./mariadb
    volumes:
@@ -31,10 +31,10 @@ services:
     - .env
    networks :
     - inception
-   restart: on-failure
+   restart: always
 #nginx
   nginx:
-    image: nginx
+    image: nginx:khbouych
     container_name: nginx
     build: ./nginx
     ports:
@@ -48,7 +48,7 @@ services:
     restart: always
 #wordpress
   wordpress:
-    image: wordpress
+    image: wordpress:khbouych
     container_name: wordpress
     build: ./wordpress
     depends_on:
@@ -59,10 +59,10 @@ services:
       - .env
     networks:
       - inception
-    restart: on-failure
+    restart: always
   #bonus part
   adminer:
-    image: adminer
+    image: adminer:khbouych
     container_name: adminer
     build: ./bonus/adminer
     depends_on:

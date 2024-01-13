@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 wget "http://www.adminer.org/latest.php" -O /var/www/wordpress/adminer.php
