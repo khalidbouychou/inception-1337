@@ -31,7 +31,7 @@ wp config set --allow-root DB_USER ${MSQLUSER}
 wp config set --allow-root DB_PASSWORD ${MYSQLPASSWORD}
 wp config set --allow-root DB_HOST "mariadb:3306"
 
-chmod 600 wp-config.php
+chmod 777 wp-config.php
 
 wp core install --url=$W_DN --title=$W_TITLE --admin_user=$W_A_N --admin_password=$W_A_P --admin_email=$W_E_A --allow-root 
 
