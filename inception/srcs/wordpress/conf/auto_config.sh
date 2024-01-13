@@ -8,8 +8,6 @@ chmod +x wp-cli.phar
 
 mv wp-cli.phar /usr/local/bin/wp
 
-mkdir -p /run/php/
-
 cd /var/www/wordpress
 
 chmod -R 755 /var/www/wordpress/
@@ -24,14 +22,10 @@ mv /var/www/wordpress/wp-config-sample.php  /var/www/wordpress/wp-config.php
 
 sed -i '36 s/\/run\/php\/php7.4-fpm.sock/9000/' /etc/php/7.4/fpm/pool.d/www.conf
 
-cd /var/www/wordpress
-
 wp config set --allow-root DB_NAME ${MYSQLDB} 
 wp config set --allow-root DB_USER ${MSQLUSER}
 wp config set --allow-root DB_PASSWORD ${MYSQLPASSWORD}
 wp config set --allow-root DB_HOST "mariadb:3306"
-
-chmod 777 wp-config.php
 
 wp core install --url=$W_DN --title=$W_TITLE --admin_user=$W_A_N --admin_password=$W_A_P --admin_email=$W_E_A --allow-root 
 
